@@ -1,0 +1,6 @@
+Model,Role,CV f1,Accuracy,Balanced accuracy,Precision,Recall,F1,ROC-AUC
+Bernoulli Naive Bayes,Naive Bayes: word present or not,0.848,0.883,0.871,0.879,0.815,0.846,0.951
+Multinomial Naive Bayes,Naive Bayes: how often each word appears,0.725,0.78,0.767,0.729,0.705,0.717,0.833
+Gaussian Naive Bayes,Naive Bayes: bell curve per input,0.806,0.831,0.852,0.713,0.954,0.816,0.947
+Random Forest,Benchmark beyond the course,0.936,0.953,0.947,0.963,0.916,0.939,0.986
+Always legitimate,Baseline,0.0,0.606,0.5,0.0,0.0,0.0,0.5

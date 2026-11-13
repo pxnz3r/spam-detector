@@ -1,0 +1,367 @@
+{
+  "dataset": "UCI Spambase",
+  "classes": [
+    "legitimate",
+    "spam"
+  ],
+  "best_model": "Random Forest",
+  "test_scores": {
+    "Bernoulli Naive Bayes": {
+      "Accuracy": 0.8827106863596872,
+      "Balanced accuracy": 0.8709036209304825,
+      "Precision": 0.8788598574821853,
+      "Recall": 0.8149779735682819,
+      "F1": 0.8457142857142858,
+      "ROC-AUC": 0.9509682781461141
+    },
+    "Multinomial Naive Bayes": {
+      "Accuracy": 0.7801911381407471,
+      "Balanced accuracy": 0.7670570538304502,
+      "Precision": 0.7289293849658315,
+      "Recall": 0.7048458149779736,
+      "F1": 0.7166853303471444,
+      "ROC-AUC": 0.8325596167337677
+    },
+    "Gaussian Naive Bayes": {
+      "Accuracy": 0.8305821025195482,
+      "Balanced accuracy": 0.8520515867247296,
+      "Precision": 0.71334431630972,
+      "Recall": 0.9537444933920705,
+      "F1": 0.8162111215834119,
+      "ROC-AUC": 0.9474399408414919
+    },
+    "Random Forest": {
+      "Accuracy": 0.9530842745438749,
+      "Balanced accuracy": 0.9466720178992409,
+      "Precision": 0.9629629629629629,
+      "Recall": 0.9162995594713657,
+      "F1": 0.9390519187358917,
+      "ROC-AUC": 0.9861631662442564
+    },
+    "Always legitimate": {
+      "Accuracy": 0.6055603822762815,
+      "Balanced accuracy": 0.5,
+      "Precision": 0.0,
+      "Recall": 0.0,
+      "F1": 0.0,
+      "ROC-AUC": 0.5
+    }
+  },
+  "cv_scores": {
+    "Bernoulli Naive Bayes": 0.8482841649298273,
+    "Multinomial Naive Bayes": 0.7248639746114909,
+    "Gaussian Naive Bayes": 0.805980769035773,
+    "Random Forest": 0.9360803474706065,
+    "Always legitimate": 0.0
+  },
+  "default_values": {
+    "word_freq_make": 0.0,
+    "word_freq_address": 0.0,
+    "word_freq_all": 0.0,
+    "word_freq_3d": 0.0,
+    "word_freq_our": 0.0,
+    "word_freq_over": 0.0,
+    "word_freq_remove": 0.0,
+    "word_freq_internet": 0.0,
+    "word_freq_order": 0.0,
+    "word_freq_mail": 0.0,
+    "word_freq_receive": 0.0,
+    "word_freq_will": 0.1,
+    "word_freq_people": 0.0,
+    "word_freq_report": 0.0,
+    "word_freq_addresses": 0.0,
+    "word_freq_free": 0.0,
+    "word_freq_business": 0.0,
+    "word_freq_email": 0.0,
+    "word_freq_you": 1.29,
+    "word_freq_credit": 0.0,
+    "word_freq_your": 0.22,
+    "word_freq_font": 0.0,
+    "word_freq_000": 0.0,
+    "word_freq_money": 0.0,
+    "word_freq_hp": 0.0,
+    "word_freq_hpl": 0.0,
+    "word_freq_george": 0.0,
+    "word_freq_650": 0.0,
+    "word_freq_lab": 0.0,
+    "word_freq_labs": 0.0,
+    "word_freq_telnet": 0.0,
+    "word_freq_857": 0.0,
+    "word_freq_data": 0.0,
+    "word_freq_415": 0.0,
+    "word_freq_85": 0.0,
+    "word_freq_technology": 0.0,
+    "word_freq_1999": 0.0,
+    "word_freq_parts": 0.0,
+    "word_freq_pm": 0.0,
+    "word_freq_direct": 0.0,
+    "word_freq_cs": 0.0,
+    "word_freq_meeting": 0.0,
+    "word_freq_original": 0.0,
+    "word_freq_project": 0.0,
+    "word_freq_re": 0.0,
+    "word_freq_edu": 0.0,
+    "word_freq_table": 0.0,
+    "word_freq_conference": 0.0,
+    "char_freq_;": 0.0,
+    "char_freq_(": 0.064,
+    "char_freq_[": 0.0,
+    "char_freq_!": 0.0,
+    "char_freq_$": 0.0,
+    "char_freq_#": 0.0,
+    "capital_run_length_average": 2.2675,
+    "capital_run_length_longest": 14.0,
+    "capital_run_length_total": 93.0
+  },
+  "feature_ranges": {
+    "word_freq_make": [
+      0.0,
+      4.54
+    ],
+    "word_freq_address": [
+      0.0,
+      14.28
+    ],
+    "word_freq_all": [
+      0.0,
+      5.1
+    ],
+    "word_freq_3d": [
+      0.0,
+      42.81
+    ],
+    "word_freq_our": [
+      0.0,
+      9.09
+    ],
+    "word_freq_over": [
+      0.0,
+      5.88
+    ],
+    "word_freq_remove": [
+      0.0,
+      7.27
+    ],
+    "word_freq_internet": [
+      0.0,
+      4.68
+    ],
+    "word_freq_order": [
+      0.0,
+      5.26
+    ],
+    "word_freq_mail": [
+      0.0,
+      18.18
+    ],
+    "word_freq_receive": [
+      0.0,
+      2.61
+    ],
+    "word_freq_will": [
+      0.0,
+      9.67
+    ],
+    "word_freq_people": [
+      0.0,
+      5.55
+    ],
+    "word_freq_report": [
+      0.0,
+      10.0
+    ],
+    "word_freq_addresses": [
+      0.0,
+      2.86
+    ],
+    "word_freq_free": [
+      0.0,
+      20.0
+    ],
+    "word_freq_business": [
+      0.0,
+      7.14
+    ],
+    "word_freq_email": [
+      0.0,
+      9.09
+    ],
+    "word_freq_you": [
+      0.0,
+      18.75
+    ],
+    "word_freq_credit": [
+      0.0,
+      18.18
+    ],
+    "word_freq_your": [
+      0.0,
+      9.52
+    ],
+    "word_freq_font": [
+      0.0,
+      17.1
+    ],
+    "word_freq_000": [
+      0.0,
+      4.76
+    ],
+    "word_freq_money": [
+      0.0,
+      9.75
+    ],
+    "word_freq_hp": [
+      0.0,
+      20.83
+    ],
+    "word_freq_hpl": [
+      0.0,
+      16.66
+    ],
+    "word_freq_george": [
+      0.0,
+      33.33
+    ],
+    "word_freq_650": [
+      0.0,
+      9.09
+    ],
+    "word_freq_lab": [
+      0.0,
+      14.28
+    ],
+    "word_freq_labs": [
+      0.0,
+      5.88
+    ],
+    "word_freq_telnet": [
+      0.0,
+      12.5
+    ],
+    "word_freq_857": [
+      0.0,
+      4.76
+    ],
+    "word_freq_data": [
+      0.0,
+      18.18
+    ],
+    "word_freq_415": [
+      0.0,
+      4.76
+    ],
+    "word_freq_85": [
+      0.0,
+      20.0
+    ],
+    "word_freq_technology": [
+      0.0,
+      7.69
+    ],
+    "word_freq_1999": [
+      0.0,
+      6.89
+    ],
+    "word_freq_parts": [
+      0.0,
+      8.33
+    ],
+    "word_freq_pm": [
+      0.0,
+      8.69
+    ],
+    "word_freq_direct": [
+      0.0,
+      4.76
+    ],
+    "word_freq_cs": [
+      0.0,
+      7.14
+    ],
+    "word_freq_meeting": [
+      0.0,
+      14.28
+    ],
+    "word_freq_original": [
+      0.0,
+      3.57
+    ],
+    "word_freq_project": [
+      0.0,
+      16.66
+    ],
+    "word_freq_re": [
+      0.0,
+      20.0
+    ],
+    "word_freq_edu": [
+      0.0,
+      16.7
+    ],
+    "word_freq_table": [
+      0.0,
+      2.12
+    ],
+    "word_freq_conference": [
+      0.0,
+      10.0
+    ],
+    "char_freq_;": [
+      0.0,
+      4.385
+    ],
+    "char_freq_(": [
+      0.0,
+      9.752
+    ],
+    "char_freq_[": [
+      0.0,
+      4.081
+    ],
+    "char_freq_!": [
+      0.0,
+      32.478
+    ],
+    "char_freq_$": [
+      0.0,
+      6.003
+    ],
+    "char_freq_#": [
+      0.0,
+      19.829
+    ],
+    "capital_run_length_average": [
+      1.0,
+      1102.5
+    ],
+    "capital_run_length_longest": [
+      1.0,
+      9989.0
+    ],
+    "capital_run_length_total": [
+      1.0,
+      15841.0
+    ]
+  },
+  "category_options": {},
+  "model_files": {
+    "Bernoulli Naive Bayes": "bernoulli_naive_bayes.joblib",
+    "Multinomial Naive Bayes": "multinomial_naive_bayes.joblib",
+    "Gaussian Naive Bayes": "gaussian_naive_bayes.joblib",
+    "Random Forest": "random_forest.joblib",
+    "Always legitimate": "always_legitimate.joblib"
+  },
+  "best_params": {
+    "Bernoulli Naive Bayes": {
+      "alpha": 0.01
+    },
+    "Multinomial Naive Bayes": {
+      "alpha": 0.01
+    },
+    "Gaussian Naive Bayes": {},
+    "Random Forest": {
+      "min_samples_leaf": 1
+    },
+    "Always legitimate": {}
+  }
+}

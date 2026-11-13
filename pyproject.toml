@@ -1,0 +1,30 @@
+[project]
+name = "spam-detector"
+version = "1.0.0"
+description = "Classifies emails as spam or legitimate with Naive Bayes on word and character frequencies, with a Streamlit demo that scores pasted text."
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+requires-python = ">=3.14"
+dependencies = [
+    "pandas>=3.1.1",
+    "numpy>=2.5.4",
+    "scikit-learn>=1.9.1",
+    "matplotlib>=3.11.2",
+    "seaborn>=0.13.2",
+    "joblib>=1.6.0",
+    "streamlit>=1.67.0",
+]
+
+[dependency-groups]
+dev = ["ruff>=0.17.5"]
+
+[tool.uv]
+package = false
+
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+ignore = ["SIM108", "SIM110", "E501", "B905"]
