@@ -17,6 +17,7 @@ import os
 import streamlit as st
 
 from pxlab.app import (
+    cutoff_choice,
     probability_bar,
     setup_page,
     show_figure,
@@ -65,13 +66,13 @@ def load_everything():
     return load_models(MODEL_FOLDER)
 
 
-def show_check_page(models):
+def show_check_page(model_info, models):
     """
     The Check an email tab: the text on the left, the verdict and the
     evidence on the right.
 
-    Input:
-        models: from load_models().
+    Inputs:
+        model_info, models: from load_models().
     Returns:
         Nothing.
     """
@@ -93,9 +94,14 @@ def show_check_page(models):
     spam_column = list(pipeline.classes_).index("spam")
     chance = float(pipeline.predict_proba(features)[0, spam_column])
     with right:
-        st.subheader("Spam" if chance >= 0.5 else "Legitimate", anchor=False)
+        cutoff = cutoff_choice(model_info, model_name, key=f"cutoff-{model_name}")
+        st.subheader("Spam" if chance >= cutoff else "Legitimate", anchor=False)
         st.markdown(f"Chance of spam **{chance:.0%}**")
-        probability_bar(chance, threshold=0.5)
+        probability_bar(chance, threshold=cutoff)
+        st.caption(
+            f"Spam when the chance is at least {cutoff:.0%} (the line). Losing a real email counts five times "
+            "letting one spam through, so the tuned cut-off needs more evidence than 50%."
+        )
         if model_name == MAIN_MODEL:
             st.subheader("What pushed it", anchor=False)
             st.caption(
@@ -145,13 +151,13 @@ def main():
     if not models_are_saved(MODEL_FOLDER):
         st.error("No saved models yet. Run `python main.py` first.")
         st.stop()
-    _, models = load_everything()
+    model_info, models = load_everything()
 
     overview, check, words, results = st.tabs(["Overview", "Check an email", "Spam words", "Results"])
     with overview:
         show_markdown_file("app_overview.md")
     with check:
-        show_check_page(models)
+        show_check_page(model_info, models)
     with words:
         show_words_page()
     with results:

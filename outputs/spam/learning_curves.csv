@@ -1,0 +1,25 @@
+Model,Training rows,Training score,Validation score
+Bernoulli Naive Bayes,414,0.8517,0.8476
+Bernoulli Naive Bayes,883,0.8586,0.847
+Bernoulli Naive Bayes,1352,0.8559,0.8484
+Bernoulli Naive Bayes,1821,0.8526,0.8509
+Bernoulli Naive Bayes,2290,0.8515,0.8495
+Bernoulli Naive Bayes,2760,0.8515,0.8483
+Multinomial Naive Bayes,414,0.7172,0.713
+Multinomial Naive Bayes,883,0.7386,0.7393
+Multinomial Naive Bayes,1352,0.7427,0.7303
+Multinomial Naive Bayes,1821,0.7269,0.7247
+Multinomial Naive Bayes,2290,0.7213,0.7221
+Multinomial Naive Bayes,2760,0.7242,0.7249
+Gaussian Naive Bayes,414,0.8228,0.8108
+Gaussian Naive Bayes,883,0.82,0.8058
+Gaussian Naive Bayes,1352,0.8195,0.8067
+Gaussian Naive Bayes,1821,0.8112,0.8094
+Gaussian Naive Bayes,2290,0.808,0.805
+Gaussian Naive Bayes,2760,0.8078,0.806
+Random Forest,414,1.0,0.9127
+Random Forest,883,1.0,0.9169
+Random Forest,1352,0.9998,0.9282
+Random Forest,1821,0.9997,0.9327
+Random Forest,2290,0.9997,0.9359
+Random Forest,2760,0.9996,0.9377

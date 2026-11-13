@@ -1,0 +1,5 @@
+Best model,Compared with,Best is better on,Other is better on,Test,p-value,Verdict
+Random Forest,Bernoulli Naive Bayes,90,9,McNemar,0.0,Real difference
+Random Forest,Multinomial Naive Bayes,223,24,McNemar,0.0,Real difference
+Random Forest,Gaussian Naive Bayes,174,33,McNemar,0.0,Real difference
+Random Forest,Always legitimate,416,16,McNemar,0.0,Real difference

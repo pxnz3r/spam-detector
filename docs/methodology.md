@@ -31,6 +31,7 @@ Spambase: 4,601 emails from 1999, 1,813 spam (39%) and 2,788 legitimate. The leg
 5. **Test scores**: accuracy, balanced accuracy, precision, recall and F1 for spam, and ROC-AUC. Confusion matrices and ROC curves.
 6. **Word evidence**: for Bernoulli Naive Bayes, the log of (chance the word appears in spam / chance in legitimate email) for every input. In the app, the evidence for one email adds up every input, present or absent.
 7. **Importance**: permutation importance on the test set for Bernoulli Naive Bayes and the forest, 10 shuffles per input.
+8. **In-depth analysis** (`pxlab.tabular.study`): 1,000-round bootstrap 95% intervals for the headline test scores, next to a baseline that ignores the inputs; McNemar's test of the best model against each other model; learning curves; a cut-off chosen on cross-validated training predictions for the lowest cost (a real email sent to spam costs 5, a spam let through costs 1, an assumption stated in the SPEC) and then checked on the test set; a reliability diagram, Brier score and a recalibrated copy of the best model; and an error analysis that compares the inputs of caught, missed and falsely flagged cases and shows how accuracy depends on the model's confidence. Each finding is one sentence in `outputs/spam/key_findings.csv`.
 
 ## Limits
 

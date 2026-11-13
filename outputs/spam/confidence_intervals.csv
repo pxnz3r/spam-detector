@@ -1,0 +1,16 @@
+Model,Score,Test value,Low,High
+Bernoulli Naive Bayes,Accuracy,0.8827,0.8636,0.9001
+Bernoulli Naive Bayes,F1,0.8457,0.8191,0.8706
+Bernoulli Naive Bayes,ROC-AUC,0.951,0.9397,0.962
+Multinomial Naive Bayes,Accuracy,0.7802,0.7559,0.8036
+Multinomial Naive Bayes,F1,0.7167,0.6838,0.748
+Multinomial Naive Bayes,ROC-AUC,0.8326,0.8083,0.8581
+Gaussian Naive Bayes,Accuracy,0.8306,0.8097,0.8523
+Gaussian Naive Bayes,F1,0.8162,0.7909,0.8408
+Gaussian Naive Bayes,ROC-AUC,0.9474,0.9345,0.9596
+Random Forest,Accuracy,0.9531,0.9409,0.9644
+Random Forest,F1,0.9391,0.9227,0.9549
+Random Forest,ROC-AUC,0.9862,0.9783,0.9926
+Always legitimate,Accuracy,0.6056,0.5752,0.6342
+Always legitimate,F1,0.0,0.0,0.0
+Always legitimate,ROC-AUC,0.5,0.5,0.5

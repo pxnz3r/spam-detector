@@ -344,6 +344,29 @@
     ]
   },
   "category_options": {},
+  "thresholds": {
+    "Bernoulli Naive Bayes": 0.96,
+    "Multinomial Naive Bayes": 0.98,
+    "Gaussian Naive Bayes": 0.98,
+    "Random Forest": 0.65,
+    "Always legitimate": 0.02
+  },
+  "threshold_rule": "lowest cost",
+  "findings": [
+    "Random Forest scores F1 0.939 on the test set (95% interval 0.923 to 0.955); the baseline that ignores the inputs (Always legitimate) scores 0.000.",
+    "Random Forest against Bernoulli Naive Bayes on right or wrong answers (McNemar): real difference (p = 0.000).",
+    "Random Forest against Multinomial Naive Bayes on right or wrong answers (McNemar): real difference (p = 0.000).",
+    "Random Forest against Gaussian Naive Bayes on right or wrong answers (McNemar): real difference (p = 0.000).",
+    "Random Forest against Always legitimate on right or wrong answers (McNemar): real difference (p = 0.000).",
+    "Bernoulli Naive Bayes generalises well: training and validation f1 are close (+0.003); validation has levelled off, so more data alone would help little.",
+    "Multinomial Naive Bayes generalises well: training and validation f1 are close (-0.001); validation has levelled off, so more data alone would help little.",
+    "Gaussian Naive Bayes generalises well: training and validation f1 are close (+0.002); validation has levelled off, so more data alone would help little.",
+    "Random Forest generalises well: training and validation f1 are close (+0.062); validation has levelled off, so more data alone would help little.",
+    "Cut-off for Random Forest: 0.65 instead of 0.5, chosen for the lowest cost. On the test set: recall 0.92 to 0.87, precision 0.96 to 0.97, cost per 100 cases 10.3 to 9.6.",
+    "Most honest probabilities: Random Forest recalibrated (isotonic) (Brier 0.036); Random Forest has Brier 0.042 and calibration error 0.052.",
+    "The input that most separates caught from missed spam is \"$\" (% of characters): average 0.19 when caught, 0.008 when missed.",
+    "When Random Forest is at least 90% sure it is right 99% of the time (68% of test cases)."
+  ],
   "model_files": {
     "Bernoulli Naive Bayes": "bernoulli_naive_bayes.joblib",
     "Multinomial Naive Bayes": "multinomial_naive_bayes.joblib",

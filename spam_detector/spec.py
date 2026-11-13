@@ -73,6 +73,14 @@ SPAM_SPEC = {
     "labels": readable_labels(),
     "test_size": 0.25,
     "scoring": "f1",
+    # Sending a real email to the spam folder (false positive) is assumed
+    # five times as bad as letting one spam through. The cut-off is tuned for it.
+    "error_costs": {
+        "false_positive": 5,
+        "false_negative": 1,
+        "reason": "A real email lost in the spam folder can be missed for good; a spam that gets through is deleted "
+        "in a second.",
+    },
     "models": {
         "Bernoulli Naive Bayes": {
             "estimator": BernoulliNB(binarize=0.0),

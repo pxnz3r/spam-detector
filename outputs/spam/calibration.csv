@@ -1,0 +1,7 @@
+Model,Brier score,Calibration error,Mean predicted,Real positive share
+Bernoulli Naive Bayes,0.1024,0.0938,0.3659,0.3944
+Multinomial Naive Bayes,0.1918,0.1816,0.3791,0.3944
+Gaussian Naive Bayes,0.1688,0.1697,0.5278,0.3944
+Random Forest,0.0415,0.0519,0.3994,0.3944
+Always legitimate,0.3944,0.3944,0.0,0.3944
+Random Forest recalibrated (isotonic),0.0363,0.0098,0.3932,0.3944

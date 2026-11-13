@@ -18,6 +18,156 @@ Produced by `python main.py`. The test set is 25% of the 4,601 emails (stratifie
 
 ![roc curves](../outputs/figures/spam/roc_curves.png)
 
+## Key findings
+
+### What the in-depth analysis found
+
+| Finding |
+| --- |
+| Random Forest scores F1 0.939 on the test set (95% interval 0.923 to 0.955); the baseline that ignores the inputs (Always legitimate) scores 0.000. |
+| Random Forest against Bernoulli Naive Bayes on right or wrong answers (McNemar): real difference (p = 0.000). |
+| Random Forest against Multinomial Naive Bayes on right or wrong answers (McNemar): real difference (p = 0.000). |
+| Random Forest against Gaussian Naive Bayes on right or wrong answers (McNemar): real difference (p = 0.000). |
+| Random Forest against Always legitimate on right or wrong answers (McNemar): real difference (p = 0.000). |
+| Bernoulli Naive Bayes generalises well: training and validation f1 are close (+0.003); validation has levelled off, so more data alone would help little. |
+| Multinomial Naive Bayes generalises well: training and validation f1 are close (-0.001); validation has levelled off, so more data alone would help little. |
+| Gaussian Naive Bayes generalises well: training and validation f1 are close (+0.002); validation has levelled off, so more data alone would help little. |
+| Random Forest generalises well: training and validation f1 are close (+0.062); validation has levelled off, so more data alone would help little. |
+| Cut-off for Random Forest: 0.65 instead of 0.5, chosen for the lowest cost. On the test set: recall 0.92 to 0.87, precision 0.96 to 0.97, cost per 100 cases 10.3 to 9.6. |
+| Most honest probabilities: Random Forest recalibrated (isotonic) (Brier 0.036); Random Forest has Brier 0.042 and calibration error 0.052. |
+| The input that most separates caught from missed spam is "$" (% of characters): average 0.19 when caught, 0.008 when missed. |
+| When Random Forest is at least 90% sure it is right 99% of the time (68% of test cases). |
+
+## Reliability
+
+Bootstrap 95% intervals: how much each test score could move with a different test sample.
+
+![confidence intervals](../outputs/figures/spam/confidence_intervals.png)
+
+### Confidence intervals
+
+| Model | Score | Test value | Low | High |
+| --- | --- | --- | --- | --- |
+| Bernoulli Naive Bayes | Accuracy | 0.8827 | 0.8636 | 0.9001 |
+| Bernoulli Naive Bayes | F1 | 0.8457 | 0.8191 | 0.8706 |
+| Bernoulli Naive Bayes | ROC-AUC | 0.951 | 0.9397 | 0.962 |
+| Multinomial Naive Bayes | Accuracy | 0.7802 | 0.7559 | 0.8036 |
+| Multinomial Naive Bayes | F1 | 0.7167 | 0.6838 | 0.748 |
+| Multinomial Naive Bayes | ROC-AUC | 0.8326 | 0.8083 | 0.8581 |
+| Gaussian Naive Bayes | Accuracy | 0.8306 | 0.8097 | 0.8523 |
+| Gaussian Naive Bayes | F1 | 0.8162 | 0.7909 | 0.8408 |
+| Gaussian Naive Bayes | ROC-AUC | 0.9474 | 0.9345 | 0.9596 |
+| Random Forest | Accuracy | 0.9531 | 0.9409 | 0.9644 |
+| Random Forest | F1 | 0.9391 | 0.9227 | 0.9549 |
+| Random Forest | ROC-AUC | 0.9862 | 0.9783 | 0.9926 |
+| Always legitimate | Accuracy | 0.6056 | 0.5752 | 0.6342 |
+| Always legitimate | F1 | 0.0 | 0.0 | 0.0 |
+| Always legitimate | ROC-AUC | 0.5 | 0.5 | 0.5 |
+
+### Is the best model really better? (paired tests)
+
+| Best model | Compared with | Best is better on | Other is better on | Test | p-value | Verdict |
+| --- | --- | --- | --- | --- | --- | --- |
+| Random Forest | Bernoulli Naive Bayes | 90 | 9 | McNemar | 0.0 | Real difference |
+| Random Forest | Multinomial Naive Bayes | 223 | 24 | McNemar | 0.0 | Real difference |
+| Random Forest | Gaussian Naive Bayes | 174 | 33 | McNemar | 0.0 | Real difference |
+| Random Forest | Always legitimate | 416 | 16 | McNemar | 0.0 | Real difference |
+
+![learning curves](../outputs/figures/spam/learning_curves.png)
+
+### Learning curves
+
+| Model | Training rows | Training score | Validation score |
+| --- | --- | --- | --- |
+| Bernoulli Naive Bayes | 414 | 0.8517 | 0.8476 |
+| Bernoulli Naive Bayes | 883 | 0.8586 | 0.847 |
+| Bernoulli Naive Bayes | 1352 | 0.8559 | 0.8484 |
+| Bernoulli Naive Bayes | 1821 | 0.8526 | 0.8509 |
+| Bernoulli Naive Bayes | 2290 | 0.8515 | 0.8495 |
+| Bernoulli Naive Bayes | 2760 | 0.8515 | 0.8483 |
+| Multinomial Naive Bayes | 414 | 0.7172 | 0.713 |
+| Multinomial Naive Bayes | 883 | 0.7386 | 0.7393 |
+| Multinomial Naive Bayes | 1352 | 0.7427 | 0.7303 |
+| Multinomial Naive Bayes | 1821 | 0.7269 | 0.7247 |
+| Multinomial Naive Bayes | 2290 | 0.7213 | 0.7221 |
+| Multinomial Naive Bayes | 2760 | 0.7242 | 0.7249 |
+| Gaussian Naive Bayes | 414 | 0.8228 | 0.8108 |
+| Gaussian Naive Bayes | 883 | 0.82 | 0.8058 |
+| Gaussian Naive Bayes | 1352 | 0.8195 | 0.8067 |
+| Gaussian Naive Bayes | 1821 | 0.8112 | 0.8094 |
+| Gaussian Naive Bayes | 2290 | 0.808 | 0.805 |
+| Gaussian Naive Bayes | 2760 | 0.8078 | 0.806 |
+| Random Forest | 414 | 1.0 | 0.9127 |
+| Random Forest | 883 | 1.0 | 0.9169 |
+| Random Forest | 1352 | 0.9998 | 0.9282 |
+| Random Forest | 1821 | 0.9997 | 0.9327 |
+| Random Forest | 2290 | 0.9997 | 0.9359 |
+| Random Forest | 2760 | 0.9996 | 0.9377 |
+
+## Cut-off and calibration
+
+The cut-off is chosen on cross-validated training predictions, then checked on the test set. Costs: a false alarm costs 5, a miss costs 1. A real email lost in the spam folder can be missed for good; a spam that gets through is deleted in a second.
+
+![threshold curve](../outputs/figures/spam/threshold_curve.png)
+
+### Default against tuned cut-off on the test set
+
+| Model | Cut-off | Threshold | Precision | Recall | F1 | Accuracy | Cost per 100 cases | TP | FP | FN | TN |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Bernoulli Naive Bayes | Default | 0.5 | 0.879 | 0.815 | 0.846 | 0.883 | 29.453 | 370 | 51 | 84 | 646 |
+| Bernoulli Naive Bayes | Tuned | 0.96 | 0.915 | 0.714 | 0.802 | 0.861 | 24.327 | 324 | 30 | 130 | 667 |
+| Multinomial Naive Bayes | Default | 0.5 | 0.729 | 0.705 | 0.717 | 0.78 | 63.336 | 320 | 119 | 134 | 578 |
+| Multinomial Naive Bayes | Tuned | 0.98 | 0.804 | 0.577 | 0.672 | 0.778 | 44.483 | 262 | 64 | 192 | 633 |
+| Gaussian Naive Bayes | Default | 0.5 | 0.713 | 0.954 | 0.816 | 0.831 | 77.411 | 433 | 174 | 21 | 523 |
+| Gaussian Naive Bayes | Tuned | 0.98 | 0.719 | 0.952 | 0.819 | 0.834 | 75.326 | 432 | 169 | 22 | 528 |
+| Random Forest | Default | 0.5 | 0.963 | 0.916 | 0.939 | 0.953 | 10.252 | 416 | 16 | 38 | 681 |
+| Random Forest | Tuned | 0.65 | 0.975 | 0.866 | 0.917 | 0.938 | 9.644 | 393 | 10 | 61 | 687 |
+| Always legitimate | Default | 0.5 | 0.0 | 0.0 | 0.0 | 0.606 | 39.444 | 0 | 0 | 454 | 697 |
+| Always legitimate | Tuned | 0.02 | 0.0 | 0.0 | 0.0 | 0.606 | 39.444 | 0 | 0 | 454 | 697 |
+
+![reliability](../outputs/figures/spam/reliability.png)
+
+### How honest the probabilities are
+
+| Model | Brier score | Calibration error | Mean predicted | Real positive share |
+| --- | --- | --- | --- | --- |
+| Bernoulli Naive Bayes | 0.1024 | 0.0938 | 0.3659 | 0.3944 |
+| Multinomial Naive Bayes | 0.1918 | 0.1816 | 0.3791 | 0.3944 |
+| Gaussian Naive Bayes | 0.1688 | 0.1697 | 0.5278 | 0.3944 |
+| Random Forest | 0.0415 | 0.0519 | 0.3994 | 0.3944 |
+| Always legitimate | 0.3944 | 0.3944 | 0.0 | 0.3944 |
+| Random Forest recalibrated (isotonic) | 0.0363 | 0.0098 | 0.3932 | 0.3944 |
+
+## Error analysis
+
+![error groups](../outputs/figures/spam/error_groups.png)
+
+### Average inputs per outcome group
+
+| Input | Caught spam (TP) | Missed spam (FN) | False alarm (FP) | Correct negative (TN) |
+| --- | --- | --- | --- | --- |
+| Cases | 393.0 | 61.0 | 10.0 | 687.0 |
+| "receive" (% of words) | 0.109 | 0.044 | 0.198 | 0.012 |
+| "all" (% of words) | 0.459 | 0.219 | 0.647 | 0.207 |
+| "$" (% of characters) | 0.19 | 0.008 | 0.079 | 0.012 |
+| "internet" (% of words) | 0.226 | 0.445 | 0.034 | 0.037 |
+| "remove" (% of words) | 0.292 | 0.012 | 0.131 | 0.005 |
+| "people" (% of words) | 0.153 | 0.075 | 0.241 | 0.061 |
+| "email" (% of words) | 0.305 | 0.224 | 0.411 | 0.079 |
+| "!" (% of characters) | 0.58 | 0.223 | 0.277 | 0.085 |
+
+![confidence](../outputs/figures/spam/confidence.png)
+
+### Accuracy by confidence
+
+| Confidence | Cases | Share of the test set | Accuracy |
+| --- | --- | --- | --- |
+| 0% to 60% | 53 | 0.046 | 0.604 |
+| 60% to 70% | 62 | 0.054 | 0.774 |
+| 70% to 80% | 90 | 0.078 | 0.911 |
+| 80% to 90% | 162 | 0.141 | 0.975 |
+| 90% to 100% | 784 | 0.681 | 0.991 |
+
 ## Spam words
 
 ![word evidence](../outputs/figures/spam/word_evidence.png)

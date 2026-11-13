@@ -31,6 +31,7 @@ from pxlab.tabular.evaluate import (
     wrong_predictions,
 )
 from pxlab.tabular.explain import permutation_importance_table, plot_permutation_importance
+from pxlab.tabular.study import run_study
 from pxlab.tabular.train import best_model_name, save_models, train_models
 from spam_detector.data import load_spambase
 from spam_detector.explain import word_evidence_table
@@ -99,6 +100,10 @@ def main():
     )
     plot_permutation_importance(importance, filename=f"{FOLDER}/permutation_importance.png")
 
+    study = run_study(
+        spec, results, best_model_name(results), train_features, train_target, test_features, test_target, FOLDER
+    )
+
     model_info = {
         "dataset": "UCI Spambase",
         "classes": ["legitimate", "spam"],
@@ -109,6 +114,7 @@ def main():
         "cv_scores": {name: r["cv_score"] for name, r in results.items()},
     }
     model_info.update(input_summary(train_features, spec))
+    model_info.update(study)
     save_models(results, model_info, folder=model_folder)
 
     write_results_doc(

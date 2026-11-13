@@ -1,0 +1,11 @@
+Model,Cut-off,Threshold,Precision,Recall,F1,Accuracy,Cost per 100 cases,TP,FP,FN,TN
+Bernoulli Naive Bayes,Default,0.5,0.879,0.815,0.846,0.883,29.453,370,51,84,646
+Bernoulli Naive Bayes,Tuned,0.96,0.915,0.714,0.802,0.861,24.327,324,30,130,667
+Multinomial Naive Bayes,Default,0.5,0.729,0.705,0.717,0.78,63.336,320,119,134,578
+Multinomial Naive Bayes,Tuned,0.98,0.804,0.577,0.672,0.778,44.483,262,64,192,633
+Gaussian Naive Bayes,Default,0.5,0.713,0.954,0.816,0.831,77.411,433,174,21,523
+Gaussian Naive Bayes,Tuned,0.98,0.719,0.952,0.819,0.834,75.326,432,169,22,528
+Random Forest,Default,0.5,0.963,0.916,0.939,0.953,10.252,416,16,38,681
+Random Forest,Tuned,0.65,0.975,0.866,0.917,0.938,9.644,393,10,61,687
+Always legitimate,Default,0.5,0.0,0.0,0.0,0.606,39.444,0,0,454,697
+Always legitimate,Tuned,0.02,0.0,0.0,0.0,0.606,39.444,0,0,454,697
