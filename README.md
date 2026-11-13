@@ -1,8 +1,28 @@
-# Spam detector
+<div align="center">
 
-Classifies email as spam or legitimate with Naive Bayes, from how often particular words and characters appear. Built on the UCI Spambase data, with an interactive demo that checks any email you paste in and shows which words pushed the verdict.
+<h1>Spam detector</h1>
 
-![Words Naive Bayes ties to spam and to legitimate email](outputs/figures/spam/word_evidence.png)
+<p>Classifies email as spam or legitimate with Naive Bayes, from how often particular words and characters appear. Built on the UCI Spambase data, with an interactive demo that checks any email you paste in and shows which words pushed the verdict.</p>
+
+<p>
+<a href="https://github.com/pxnz3r/spam-detector/actions/workflows/ci.yml"><img src="https://github.com/pxnz3r/spam-detector/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
+<img src="https://img.shields.io/badge/python-3.14-blue" alt="Python 3.14">
+<a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-green" alt="MIT license"></a>
+</p>
+
+<p><a href="docs/results.md">Results</a> · <a href="docs/methodology.md">Methodology</a> · <a href="docs/deploy.md">Deploy the demo</a></p>
+
+<img src="outputs/figures/spam/word_evidence.png" width="720" alt="Words Naive Bayes ties to spam and to legitimate email">
+
+</div>
+
+## How it works
+
+1. **Load and check** 4,601 emails from UCI Spambase, described by word and character frequencies.
+2. **Tune** Naive Bayes and its rivals with cross-validation inside leak-free pipelines.
+3. **Test how sure the scores are** with bootstrap intervals, a paired test against every rival, learning curves and a baseline that ignores the inputs.
+4. **Pick the cut-off** at the lowest cost, counting a legitimate email lost to the spam folder as five times worse than a spam that gets through, and check calibration.
+5. **Study the mistakes** and **paste any email** into the Streamlit demo to see which words pushed it either way.
 
 ## Results
 
@@ -24,6 +44,20 @@ Precision, recall and F1 are for the spam class.
 - **The forest is stronger** (F1 0.94) but can't be read word by word; Naive Bayes can.
 
 Full tables and figures: [docs/results.md](docs/results.md). How it was done: [docs/methodology.md](docs/methodology.md).
+
+## How sure the results are
+
+**The scores are tight.** Random Forest reaches F1 0.939 on the test set (95% interval 0.923 to 0.955), and beats every Naive Bayes variant on McNemar's test (p < 0.001).
+
+**Nothing overfits.** Training and validation F1 are within 0.06 for every model, and the learning curves have levelled off.
+
+**The cut-off moves to 0.65.** Losing a real email to the spam folder counts as 5 times worse than letting spam through, which cuts the cost per 100 emails from 10.3 to 9.6.
+
+**Confidence means something.** When the forest is at least 90% sure, it is right 99% of the time, and that covers 68% of emails.
+
+**Missed spam has no dollar signs.** Caught spam averages 0.19% `$` characters, missed spam 0.008%.
+
+Every table and figure behind these is in [docs/results.md](docs/results.md).
 
 ## Run it
 
